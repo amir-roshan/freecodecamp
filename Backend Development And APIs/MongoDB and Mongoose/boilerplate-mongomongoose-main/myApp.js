@@ -6,6 +6,25 @@ mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopol
 
 let Person;
 
+// Schema is a JSON object that defines the structure and contents of your data.
+const personSchema = new mongoose.Schema({
+    name: {
+        type: String,
+        required: true
+    },
+    age: {
+        type: Number
+    },
+    favoriteFoods: {
+        type: [String]
+    }
+});
+
+// Models are in capital
+Person = mongoose.model("Person", personSchema);
+console.log(Person);
+
+
 const createAndSavePerson = (done) => {
     done(null /*, data*/);
 };
